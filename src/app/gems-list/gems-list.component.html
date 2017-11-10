@@ -1,0 +1,33 @@
+<h1>Lijst Edelstenen</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>NAAM</th>
+            <th>SCHITTERING</th>
+            <th>PRIJS</th>
+            <th>TE KOOP</th>
+            <th>TOEGEVOEGD OP</th>
+            <!--<th>UITVERKOCHT</th>-->
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+        <!-- <pre>{{ edelstenen | json }}</pre>-->
+
+        <ng-container *ngFor="let edelsteen of edelstenen | async">
+            <tr *ngIf="edelsteen.uitverkocht == false || '' ">
+                <td>{{ edelsteen.naam }}</td>
+                <td>{{ edelsteen.schittering }}</td>
+                <td>{{ edelsteen.prijs | currency: 'EUR':true }}</td>
+                <td><button *ngIf="edelsteen.teKoop ">KOOP</button></td>
+                <td>{{ edelsteen.toegevoegdOp | date:'dd/MM/yyyy' }}</td>
+            </tr>
+        </ng-container>
+
+        <!--<div *ngIf="!edelstenen">Loading ...</div>
+        <div *ngIf="edelstenen && edelstenen.length == 0">Nothing to display</div>-->
+    </tbody>
+</table>

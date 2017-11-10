@@ -1,0 +1,16 @@
+label {
+    width: 15%;
+}
+
+div.btn-voeg-toe {
+    width: 30%;
+}
+
+div.verplicht {
+    color: #CF08A0;
+}
+
+h2 {
+    font-family: 'Courgette', cursive;
+    margin-bottom: 30px;
+}

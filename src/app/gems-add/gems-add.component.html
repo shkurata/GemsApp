@@ -1,0 +1,36 @@
+<h2>Edelsteen toevoegen</h2>
+<!--<pre>{{ edelstenen | json }}</pre>-->
+<form [formGroup]="voegEdelsteenToeForm" (ngSubmit)="submitEdelsteen()">
+    <div class="form-group">
+        <label for="naam">Naam:</label>
+        <input type="text" formControlName="naam" #naamVar />
+        <div ngClass="verplicht" *ngIf="!voegEdelsteenToeForm.get(['naam']).valid && voegEdelsteenToeForm.get(['naam']).touched">Naam moet ingevuld worden.</div>
+    </div>
+    <div class="form-group">
+        <label for="prijs">Prijs:</label>
+        <input type="number" formControlName="prijs" />
+        <div class="verplicht" *ngIf="!voegEdelsteenToeForm.get(['prijs']).valid && voegEdelsteenToeForm.get(['prijs']).touched">Prijs moet ingevuld worden.</div>
+    </div>
+    <div class="form-group">
+        <label for="teKoop">Te koop:</label>
+        <input type="checkbox" formControlName="teKoop" />
+    </div>
+    <div class="form-group">
+        <label for="uitverkocht">Uitverkocht:</label>
+        <input type="checkbox" formControlName="uitverkocht" />
+    </div>
+    <div class="form-group">
+        <label for="selSchittering">Schittering</label>
+        <select id="selSchittering" class="form-control" required formControlName="selSchittering">
+     <option *ngIf="!voegEdelsteenToeForm.get(['selSchittering']).valid" id="selSchitteringDefault1" value="" disabled="true" [selected]="!selSchittering">-- Kies schittering --</option>
+     <option *ngFor="let schittering of schitteringen" [value]="schittering">{{schittering}}</option>
+  </select>
+        <div class="verplicht" *ngIf="!voegEdelsteenToeForm.get(['selSchittering']).valid && voegEdelsteenToeForm.get(['selSchittering']).touched">Je moet een schittering kiezen.</div>
+
+    </div>
+    <div class="btn-voeg-toe">
+        <button class="btn btn-primary" type="submit" [disabled]="!voegEdelsteenToeForm.valid">VOEG TOE</button>
+    </div>
+    <!--<p>FORM: {{ voegEdelsteenToeForm.value | json }}</p>
+    <p>Form status: {{ voegEdelsteenToeForm.status | json }}</p>-->
+</form>
